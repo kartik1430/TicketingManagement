@@ -1,0 +1,351 @@
+<div class="container rounded bg-white">
+    <div class="row">
+        <div class="col-md-14 border-right">
+            <div class="p-3 py-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="card-title"><strong>Employee Master</strong></h3>
+                
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary btnViewList" (click)="Back()">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <form #myForm="ngForm" (ngSubmit)="myForm.form.valid && submit(myForm)">
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="firstName">First Name</label>
+                            <input #firstName="ngModel" [(ngModel)]="service.userData.firstName" type="text"
+                                 class="form-control" pattern="[a-zA-Z ]*"
+                                placeholder="Enter your firstname" name="firstName" autocomplete="off" required />
+                            <span class="text-danger"
+                                *ngIf="(firstName.touched || myForm.submitted) && firstName.errors?.['required']">
+                                Firstname is required
+                            </span>
+                            <span class="text-danger" *ngIf="firstName.touched && firstName.errors?.['pattern']">
+                                Enter a valid Firstname
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="middleName">Middle Name</label>
+                            <input #middleName="ngModel" pattern="[a-zA-Z ]*" [(ngModel)]="service.userData.middleName"
+                                type="text"  class="form-control"
+                                placeholder="Enter your middleName" name="middleName" autocomplete="off" required />
+                            <span class="text-danger"
+                                *ngIf="(middleName.touched || myForm.submitted) && middleName.errors?.['required']">
+                                Lastname is required
+                            </span>
+                            <span class="text-danger" *ngIf="middleName.touched && middleName.errors?.['pattern']">
+                                Enter a valid Middlename
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="lastName">lastName</label>
+                            <input #lastName="ngModel" pattern="[a-zA-Z ]*" [(ngModel)]="service.userData.lastName"
+                                type="text"  class="form-control"
+                                placeholder="Enter your lastName" name="lastName" autocomplete="off" required />
+                            <span class="text-danger"
+                                *ngIf="(lastName.touched || myForm.submitted) && lastName.errors?.['required']">
+                                Lastname is required
+                            </span>
+                            <span class="text-danger" *ngIf="lastName.touched && lastName.errors?.['pattern']">
+                                Enter a valid Lastname
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter Email"
+                                #email="ngModel" [(ngModel)]="service.userData.email" required autocomplete="off"
+                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                            <div *ngIf="email.invalid && (email.touched || email.dirty)" class="float-right">
+                                <p class="text-danger"> This field is Required</p>
+                            </div>
+                            <div *ngIf="email.errors && email.errors?.['pattern']">
+                                <p class="text-danger">Email is invalid</p>
+                            </div> -->
+                            <label>Email</label>
+                            <input type="text" class="form-control" [(ngModel)]="service.userData.email" name="email"
+                                placeholder="Enter Email" #email="ngModel" required email autocomplete="off"
+                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                            <span class="text-danger"
+                                *ngIf="(email.touched || myForm.submitted) && email.errors?.['required']">
+                                Email is required
+                            </span>
+                            <span class="text-danger" *ngIf="email.touched && email.errors?.['pattern']">
+                                Enter a valid email address
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="date">DateOfBirth</label>
+                            <input type="date" name="doj" class="form-control" #doj="ngModel"
+                                [(ngModel)]="service.userData.dateOfBirth" required>
+                            <div *ngIf="doj.invalid && (doj.touched || doj.dirty || myForm.submitted)" class="float-right">
+                                <p class="text-danger">DOB is required</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="bloodGroupId">BloodGroup</label>
+                            <select #bloodGroupId="ngModel" [(ngModel)]="service.userData.bloodGroupId"
+                                 class="form-control" name="bloodGroupId"
+                                id="bloodGroupId">
+                                <option value="0">Select BloodGroup</option>
+                                <option *ngFor="let bg of bgData" value="{{bg.id}}">{{bg.bloodGroupType}}</option>
+                            </select>
+                            
+                            <div *ngIf="bloodGroupId.touched && bloodGroupId.value==0 || myForm.submitted " class="float-right">
+                                <p class="text-danger">Please Select BloodGroup</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="departmentId">Department</label>
+                            <select [(ngModel)]="service.userData.departmentId" 
+                                class="form-control" #departmentId="ngModel" name="departmentId" id="departmentId">
+                                <option value="0">Select Department</option>
+                                <option *ngFor="let dep of departData" value="{{dep.id}}">{{dep.name}}</option>
+                            </select>
+                            <div *ngIf="departmentId.touched && departmentId.value==0 || myForm.submitted" class="float-right">
+                                <p class="text-danger">Please Select Department</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="designationId">Designation</label>
+                            <select [(ngModel)]="service.userData.designationId"
+                                class="form-control" #designationId="ngModel" name="designationId" id="designationId"
+                                required>
+                                <option value="">Select Designation</option>
+                                <option *ngFor="let desig of desigData" value="{{desig.id}}">{{desig.name}}</option>
+                            </select>
+                            <div *ngIf="designationId.touched && designationId.value==0 || myForm.submitted" class="float-right">
+                                <p class="text-danger">Please select Department</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Select Gender : </label><br>
+                            <input [(ngModel)]="service.userData.gender" type="radio" id="Male" name="gender" required
+                                #gender="ngModel" value="Male" checked>
+                              <label for="male">Male</label>
+                              <input [(ngModel)]="service.userData.gender" type="radio" id="Female" name="gender"
+                                required #gender="ngModel" value="Female">
+                              <label for="female">Female</label>
+                              <input type="radio" name="gender" required #gender="ngModel"
+                                [(ngModel)]="service.userData.gender" id="Other" value="Other">
+                              <label for="other">Other</label>
+                            <div *ngIf="gender.touched && gender.value==0 || myForm.submitted" class="float-right">
+                                <p class="text-danger">Please select Gender</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="aadharNumber">AadharCard Number</label>
+                            <input type="text" name="aadharNumber"  maxlength="12"  pattern="^((\\+91-?)|0)?[0-9]{12}$"
+                                required #aadharNumber="ngModel" 
+                                [(ngModel)]="service.userData.aadharNumber" autocomplete="off" class="form-control"
+                                placeholder="Enter your AadharCard Number" />
+                            <span class="text-danger"
+                                *ngIf="(aadharNumber.touched || myForm.submitted) && aadharNumber.errors?.['required']">
+                                AadharNumber is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="aadharNumber.touched && aadharNumber.errors?.['maxlength']">
+                                aadharNumber should contain 12 numbers
+                            </span>
+                            <span class="text-danger" *ngIf="aadharNumber.touched && aadharNumber.errors?.['pattern']">
+                                Enter a valid AadharNumber
+                            </span>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="panNumber">Pancard Number</label>
+                            <input [(ngModel)]="service.userData.panNumber" pattern="^([A-Z]){5}([0-9]){4}([A-Z]){1}$"
+                                maxlength="10"  type="text" class="form-control"
+                                placeholder="Enter your Pancard Number" autocomplete="off" name="panNumber" required
+                                #panNumber="ngModel" />
+                            <!-- <div *ngIf="panNumber.invalid && (panNumber.touched || panNumber.dirty)"
+                                class="float-right">
+                                <p class="text-danger">Panumber is required</p>
+                            </div>
+                            <div *ngIf="panNumber.errors?.['maxlength']" class="float-right">
+                                <p class="text-danger">Panumber should contain 12 numbers</p>
+                            </div>
+                            <div *ngIf="panNumber.errors && panNumber.errors?.['pattern']">
+                                <p class="text-danger">Panumber should only contain numbers</p>
+                            </div> -->
+                            <span class="text-danger"
+                                *ngIf="(panNumber.touched || myForm.submitted) && panNumber.errors?.['required']">
+                                Pancad Number is required
+                            </span>
+                            <span class="text-danger" *ngIf="panNumber.touched && panNumber.errors?.['pattern']">
+                                Enter a valid Pannumber
+                            </span>
+                            <span class="text-danger" *ngIf="panNumber.touched && panNumber.errors?.['maxlength']">
+                                PanNumber should contain 10 numbers
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="mobile">Phone Number1</label>
+                            <input [(ngModel)]="service.userData.mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                maxlength="10" name="mobile" required #mobile="ngModel"
+                                 type="text" class="form-control"
+                                autocomplete="off" placeholder="Enter your PhoneNumber1" />
+                            <!-- <div *ngIf="mobile.invalid && (mobile.touched || mobile.dirty)" class="float-right">
+                                <p class="text-danger">Mobileno is required</p>
+                            </div>
+                            <div *ngIf="mobile.errors?.['maxlength']" class="float-right">
+                                <p class="text-danger">Mobile Number should contain 10 numbers</p>
+                            </div>
+                            <div *ngIf="mobile.errors && mobile.errors?.['pattern']">
+                                <p class="text-danger">Mobile Number should only contain numbers</p>
+                            </div> -->
+                            <span class="text-danger"
+                                *ngIf="(mobile.touched || myForm.submitted) && mobile.errors?.['required']">
+                                Number is required
+                            </span>
+                            <span class="text-danger" *ngIf="mobile.touched && mobile.errors?.['pattern']">
+                                Enter a valid Number
+                            </span>
+                            <span class="text-danger" *ngIf="mobile.touched && mobile.errors?.['maxlength']">
+                                Mobileno should contain 12 numbers
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="on">Phone Number2</label><input type="text" name="on" required #on="ngModel"
+                                [(ngModel)]="service.userData.otherContactNumber" 
+                                autocomplete="off" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                maxlength="10" placeholder="Enter your PhoneNumber2" />
+                            <!-- <div *ngIf="on.invalid && (on.touched || on.dirty)" class="float-right">
+                                <p class="text-danger">Mobileno is required</p>
+                            </div>
+                            <div *ngIf="on.errors?.['maxlength']" class="float-right">
+                                <p class="text-danger">Mobile Number should contain 10 numbers</p>
+                            </div>
+                            <div *ngIf="on.errors && on.errors?.['pattern']">
+                                <p class="text-danger">Mobile Number should only contain numbers</p>
+                            </div> -->
+                            <span class="text-danger"
+                                *ngIf="(on.touched || myForm.submitted) && on.errors?.['required']">
+                                Number is required
+                            </span>
+                            <span class="text-danger" *ngIf="on.touched && on.errors?.['pattern']">
+                                Enter a valid Number
+                            </span>
+                            <span class="text-danger" *ngIf="on.touched && on.errors?.['maxlength']">
+                                Mobileno should contain 12 numbers
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="country">Country</label>
+                            <select [(ngModel)]="service.userData.countryId" class="form-control" (change)="changeCountry($event)"
+                                 name="country" id="countrys" required
+                                autocomplete="off" #country="ngModel">
+                                <option value="0">Select Country</option>
+                                <option *ngFor="let count of countryData" value="{{count.id}}">{{count.name}}</option>
+                            </select>
+                            <div *ngIf="country.touched && country.value==0 || myForm.submitted" class="float-right">
+                                <p class="text-danger">Please select Country</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="state">State</label>
+                            <select [(ngModel)]="service.userData.stateId" (change)="changeState($event)"
+                                class="form-control" name="state"  #state="ngModel" required>
+                                <option value="0">Select State</option>
+                                <option *ngFor="let sta of stateData" value="{{sta.id}}">{{sta.name}}</option>
+                            </select>
+                            <div *ngIf="state.touched && state.value==0 || myForm.submitted" class="float-right">
+                                <p class="text-danger">Please select State</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="city">Select City</label>
+                            <select [(ngModel)]="service.userData.cityId" 
+                                class="form-control" name="city" id="city" #city="ngModel" required>
+                                <option value="0">Select City</option>
+                                <option *ngFor="let cit of cityData" value="{{cit.id}}">{{cit.name}}</option>
+                            </select>
+                            <div *ngIf="city.touched && city.value==0 || myForm.submitted" class="float-right">
+                                <p class="text-danger">Please select City</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="date">DateOfJoin</label>
+                            <input type="date" name="doj" class="form-control" #doj="ngModel"
+                                [(ngModel)]="service.userData.dateOfJoining" required>
+                            <div *ngIf="doj.invalid && (doj.touched || doj.dirty || myForm.submitted)" class="float-right">
+                                <p class="text-danger">DOJ is required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="role">Role</label>
+                            <select [(ngModel)]="service.userData.roleId" 
+                                class="form-control" name="roleId" id="rl" #roleId="ngModel" required>
+                                <option value="0">Select Role</option>
+                                <option *ngFor="let role of roleData" value="{{role.id}}">{{role.name}}</option>
+                            </select>
+                            <div *ngIf="roleId.touched && roleId.value==0|| myForm.submitted" class="float-right">
+                                <p class="text-danger">Please select Role</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="edu">Education</label>
+                            <select [(ngModel)]="service.userData.educationId" class="form-control" name="edu" id="rl" #edu="ngModel" required>
+                                <option value="0">Select Education</option>
+                                <option *ngFor="let edu of eduData" value="{{edu.id}}">{{edu.name}}</option>
+                            </select>
+                            <div *ngIf="edu.touched && edu.value==0 || myForm.submitted" class="float-right">
+                                <p class="text-danger">Please select Education</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="CA">Current Address</label>
+                            <textarea class="form-control" [(ngModel)]="service.userData.address" #CA="ngModel" required
+                                id="CA" name="CA" rows="2" cols="50"
+                                autocomplete="off" placeholder="Enter your address">
+                            </textarea>
+                            <div *ngIf="CA.invalid && (CA.touched || CA.dirty || myForm.submitted)" class="float-right">
+                                <p class="text-danger">Address is required</p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-12">
+                        <label for="PA">Permanent Address</label>
+                        <div class="form-check">
+                        <input class="form-check-input" id="flexCheckDefault" type="checkbox">
+                        <label class="form-check-label" for="flexCheckChecked">same as current address</label>
+                        </div>
+                        <textarea class="form-control" id="PA" name="PA" rows="2" cols="50">
+                        </textarea>       
+                        </div> -->
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button type="submit" id="btn1" class="btn btn-sm btn-primary">
+                            <i class="fas fa-save"></i> {{actionBtn}}</button>
+
+                        <button  (click)="resetForm(myForm)" id="btn2" class="btn btn-sm btn-info">
+                            <i class="fa fa-refresh" aria-hidden="true"></i> Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

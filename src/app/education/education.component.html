@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        <strong>Education Master</strong>
+    </div>
+    <div class="card-body">
+        <form #myForm="ngForm" class="form-group col-md-2" (ngSubmit)="myForm.form.valid && submit(myForm)">
+            <div class="form-group">
+                <label for="name" class="sr-only">Education</label>
+
+                <input [(ngModel)]="service.educationData.name" type="text" name="name" #name="ngModel"
+                    placeholder="Enter Education" class="form-control" required />
+                <!-- <div *ngIf="name.touched && (name.touched || name.dirty)">
+                        <p class="text-danger">This field is Required</p>
+                    </div>   -->
+            </div>
+
+
+            <div class="form-group-control">
+                <button id="btn1" type="submit" [disabled]="!myForm.valid"  class="btn btn-sm btn-primary">
+                    <i class="fas fa-save"></i> {{actionBtn}}
+                </button>
+                <!-- <button type="reset" style="margin-left: 10px" class="btn btn-sm btn-danger">
+                Reset 
+                </button> -->
+            </div>
+
+        </form>
+    </div>
+</div>
+
+

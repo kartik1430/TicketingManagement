@@ -1,0 +1,146 @@
+<!-- <div class="row">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="card-title">Role Master</h3>
+
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <button class="btn btn-primary btnViewList">View List</button>
+                    </div> -->
+                <!-- </div> 
+            </div>
+            <form #myForm="ngForm"  (ngSubmit)="myForm.form.valid && submit(myForm)">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="rolename">Role Name</label>
+                        <input [(ngModel)]="service.roleData.name" type="text" name="name" #name="ngModel"
+                            placeholder="Enter Role" class="form-control" />
+                                <!-- <div *ngIf="name.invalid && (name.touched || name.dirty)">
+                                    <p class="text-danger">Role name is Required</p>
+                                </div> -->
+                        
+                    <!-- </div>
+                    <div class="form-check mt-2"> 
+                        <input type="checkbox" class="form-check-input" name="isAdmin" #isAdmin="ngModel"
+                        [(ngModel)]="service.roleData.isAdmin" value="">
+                        <label class="form-check-label" for="isadmin">IsAdmin</label>
+                    </div>
+                    
+
+                </div>
+
+                <div class="card-footer">
+                    <button [disabled]="!myForm.valid" type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {{actionBtn}}</button>
+                </div>
+            </form> -->
+
+        <!-- </div>
+    </div>
+
+</div> --> 
+
+<div class="card">
+    <div class="card-header">
+        <div class="col-md-6">
+            <b id="role">Role Master</b>
+        </div>
+        
+    </div>
+    <div class="card-body">
+        <form #myForm="ngForm" autocomplete="off" class="form-group col-md-2" (ngSubmit)="myForm.form.valid && submit(myForm)">
+            <div class="form-group">
+                <label for="name" class="sr-only">Role</label>
+
+                <input [(ngModel)]="service.roleData.name" type="text" name="name" #name="ngModel"
+                    placeholder="Enter Role" class="form-control" required />
+                <!-- <div *ngIf="name.touched && (name.touched || name.dirty)">
+                        <p class="text-danger">This field is Required</p>
+                    </div>   -->
+            </div>
+
+            <div class="form-check mt-2"> 
+                <input type="checkbox" class="form-check-input" name="isAdmin" #isAdmin="ngModel"
+                [(ngModel)]="service.roleData.isAdmin" value="">
+                <label class="form-check-label" for="isadmin">IsAdmin</label>
+            </div>
+            
+
+          
+
+ <div>
+    <h3 id="permission" >Permission</h3>
+    <table class="table table-striped"> 
+       <thead  class="info-table__head">
+         <tr  class="info-table__table-row">
+          <th style="width:25%;" class="info-table__header-cell">#</th>
+          <th style="width:15%;"  class="info-table__header-cell info-table__header-cell--is-centered info-table__column--2">All</th>
+          <th style="width:15%;" class="info-table__header-cell info-table__header-cell--is-centered info-table__column--2">Add</th>
+          <th style="width:15%;" class="info-table__header-cell info-table__header-cell--is-centered info-table__column--2">Update</th>
+          <th style="width:15%;" class="info-table__header-cell info-table__header-cell--is-centered info-table__column--2">Delete</th>
+          <th style="width:15%;" class="info-table__header-cell info-table__header-cell--is-centered info-table__column--2">List</th>
+        </tr>
+      </thead> 
+      <tbody class="info-table__body">
+        <tr class="info-table__table-row">
+          <td class="info-table__table-cell"><strong> RoleMaster </strong></td>
+          <td class="info-table__table-cell info-table__table-cell--is-centered">
+              <input type="checkbox" id="all" class="selectall" name="all" value="all"></td>
+          <td  class="info-table__table-cell info-table__table-cell--is-centered">
+              <input type="checkbox" id="Add" name="Add" value="Add"></td>
+          <td class="info-table__table-cell info-table__table-cell--is-centered">
+              <input type="checkbox" id="Update" name="Update" value="Update"></td>
+          <td class="info-table__table-cell info-table__table-cell--is-centered">
+              <input type="checkbox" id="Delete" name="Delete" value="Delete"></td>
+          <td class="info-table__table-cell info-table__table-cell--is-centered">
+              <input type="checkbox" id="List" name="List" value="List"></td>
+        </tr>  
+          <tr class="info-table__table-row">
+            <td class="info-table__table-cell"><strong> Users </strong></td>
+            <td class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="all" name="all" value="all"></td>
+            <td  class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="Add" name="Add" value="Add"></td>
+            <td class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="Update" name="Update" value="Update"></td>
+            <td class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="Delete" name="Delete" value="Delete"></td>
+            <td class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="List" name="List" value="List"></td>
+          </tr>
+          <tr class="info-table__table-row">
+            <td class="info-table__table-cell"><strong> Department </strong></td>
+            <td class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="all" name="all" value="all"></td>
+            <td  class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="Add" name="Add" value="Add"></td>
+            <td class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="Update" name="Update" value="Update"></td>
+            <td class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="Delete" name="Delete" value="Delete"></td>
+            <td class="info-table__table-cell info-table__table-cell--is-centered">
+                <input type="checkbox" id="List" name="List" value="List"></td>
+          </tr>    
+        </tbody> 
+      
+     </table>
+  </div>  
+
+  <div class="form-group-control">
+    <button id="btn1" type="submit" style="margin-top: 10px;" [disabled]="!myForm.valid"  class="btn btn-sm btn-primary">
+        <i class="fas fa-save"></i> {{actionBtn}}
+    </button>
+    <!-- <button type="reset" style="margin-left: 10px" class="btn btn-sm btn-danger">
+    Reset 
+    </button> -->
+    </div>
+
+</form>
+</div>
+</div>
+
+
+

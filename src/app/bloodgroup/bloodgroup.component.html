@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-header">
+        <b>Bloodgroup Type</b>
+       
+    </div>
+    <div class="card-body">
+        <form #myForm="ngForm" class="form-group col-md-2" (ngSubmit)="myForm.form.valid && submit(myForm)">
+            <div class="form-group">
+                <label for="bloodGroupType" class="sr-only">Bloodgroup</label>
+                <input type="text" [(ngModel)]="service.bgData.bloodGroupType" name="bloodGroupType"
+                #bloodGroupType="ngModel" placeholder="Enter Bloodgroup" required autocomplete="off" class="form-control" />
+                
+            </div>
+        
+   
+    <div class="form-group">
+        <button id="btn1" [disabled]="!myForm.valid" type="submit" class="btn btn-sm btn-primary">
+            <i class="fas fa-save"></i> {{actionBtn}}
+        </button>
+        <!-- <button type="reset" style="margin-left: 10px" class="btn btn-sm btn-danger">
+            <i class="fa fa-ban">Reset</i> 
+        </button> -->
+    </div>
+</form>
+</div>
+</div>
+
