@@ -6,10 +6,7 @@ export const navItems: INavData[] = [
     name: 'Dashboard',
     url: '/dashboard',
     iconComponent: { name: 'cil-speedometer' },
-    // badge: {
-    //   color: 'info',
-    //   text: 'NEW'
-    // }
+
     
   },
   
@@ -47,6 +44,19 @@ export const navItems: INavData[] = [
         name: 'Bloodgroup',
         url: '/bloodgrouplist',
         iconComponent: { name: 'cil-notes' },
+      },
+    ]
+  },
+
+  {  
+    name: 'TicketMaster',
+    url: '/ticketmaster',
+    iconComponent: { name: 'cil-star' },
+    children: [
+      {
+        name: 'Ticket',
+        url: 'ticketmaster/ticket',
+        iconComponent: { name: 'cil-user' },
       },
     ]
   }

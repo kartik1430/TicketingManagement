@@ -20,16 +20,8 @@ export class ApiService {
 
   constructor(private http : HttpClient) { }
 
-   roleURL = 'http://192.168.10.77:8070/api/Role';
-   desigURL = 'http://192.168.10.77:8070/api/Designations';
-   bloodgroupURL = 'http://192.168.10.77:8070/api/BloodGroups';
-   educationURL = 'http://192.168.10.77:8070/api/Educations';
-   departmentURL = 'http://192.168.10.77:8070/api/Departments';
-   userURL = 'http://192.168.10.77:8070/api/UserDetails';
-   countryURL = 'http://192.168.10.77:8070/api/Countries';
-   stateURL ='http://192.168.10.77:8070/api/States';
-   cityURL = 'http://192.168.10.77:8070/api/Cities';
-   loginURL = 'http://192.168.10.77:8070/api/UserAdd/Login';
+  baseURL = 'http://192.168.10.77:8070/api';
+
 
   // roleURL = 'https://localhost:7273/api/Role';
   // desigURL = 'https://localhost:7273/api/Designations';
@@ -76,149 +68,149 @@ export class ApiService {
   }
 
   saveRole(){
-    return this.http.post(this.roleURL , this.roleData);
+    return this.http.post(this.baseURL + '/Role' , this.roleData);
   }
 
   singlerole(id: any): Observable<Role> {
-    return this.http.get<Role>(this.roleURL + '/GetById?roleId=' + id);
+    return this.http.get<Role>(this.baseURL + '/Role/GetById?roleId=' + id);
   }
 
   updateRole():Observable<Role>{
-    return this.http.post<Role>(this.roleURL , this.roleData);
+    return this.http.post<Role>(this.baseURL + '/Role' , this.roleData);
   }
 
   getRoles():Observable<Role[]>
   {
-    return this.http.get<Role[]>(this.roleURL + '/GetAll');
+    return this.http.get<Role[]>(this.baseURL + '/Role/GetAll');
   }
 
   deleteRole(id : number):Observable<Role>{
-    return this.http.delete<Role>(this.roleURL + '/id?id=' + id);
+    return this.http.delete<Role>(this.baseURL + '/Role/id?id=' + id);
   }
 
 
   saveDesignation(){
-    return this.http.post(this.desigURL , this.desigData);
+    return this.http.post(this.baseURL +'/Designations' , this.desigData);
   }
 
   singleDesignation(id: any): Observable<Designation> {
-    return this.http.get<Designation>(this.desigURL + '/GetById?designationId=' + id);
+    return this.http.get<Designation>(this.baseURL + '/Designations/GetById?designationId=' + id);
   }
 
   updateDesignation():Observable<Designation>{
-    return this.http.post<Designation>(this.desigURL , this.desigData);
+    return this.http.post<Designation>(this.baseURL +'/Designations', this.desigData);
   }
 
   getDesigantions():Observable<Designation[]>
   {
-    return this.http.get<Designation[]>(this.desigURL + '/GetAll');
+    return this.http.get<Designation[]>(this.baseURL + '/Designations/GetAll');
   }
 
   deleteDesignation(id : number):Observable<Designation>{
-    return this.http.delete<Designation>(this.desigURL + '/designationId?designationId=' + id);
+    return this.http.delete<Designation>(this.baseURL + '/Designations/designationId?designationId=' + id);
   }
 
   saveBloodgroup(){
-    return this.http.post(this.bloodgroupURL , this.bgData);
+    return this.http.post(this.baseURL + '/BloodGroups' , this.bgData);
   }
 
   singleBloodgroup(id: any): Observable<Bloodgroup> {
-    return this.http.get<Bloodgroup>(this.bloodgroupURL + '/GetById?bloodGroupId=' + id);
+    return this.http.get<Bloodgroup>(this.baseURL + '/BloodGroups/GetById?bloodGroupId=' + id);
   }
 
   updateBloodgroup():Observable<Bloodgroup>{
-    return this.http.post<Bloodgroup>(this.bloodgroupURL , this.bgData);
+    return this.http.post<Bloodgroup>(this.baseURL  + '/BloodGroups'  , this.bgData);
   }
 
   getBloodgroups():Observable<Bloodgroup[]>
   {
-    return this.http.get<Bloodgroup[]>(this.bloodgroupURL + '/GetAll');
+    return this.http.get<Bloodgroup[]>(this.baseURL + '/BloodGroups/GetAll');
   }
 
   deleteBloodgroup(id : number):Observable<Bloodgroup>{
-    return this.http.delete<Bloodgroup>(this.bloodgroupURL + '/bloodGroupId?bloodGroupId=' + id);
+    return this.http.delete<Bloodgroup>(this.baseURL + '/BloodGroups/bloodGroupId?bloodGroupId=' + id);
   }
 
   saveEducation(){
-    return this.http.post(this.educationURL , this.educationData);
+    return this.http.post(this.baseURL + '/Educations' , this.educationData);
   }
 
   singleEducation(id: any): Observable<Education> {
-    return this.http.get<Education>(this.educationURL + '/GetById?educationId=' + id);
+    return this.http.get<Education>(this.baseURL + '/Educations/GetById?educationId=' + id);
   }
 
   updateEducation():Observable<Education>{
-    return this.http.post<Education>(this.educationURL , this.educationData);
+    return this.http.post<Education>(this.baseURL + '/Educations' , this.educationData);
   }
 
   getEducations():Observable<Education[]>
   {
-    return this.http.get<Education[]>(this.educationURL + '/GetAll');
+    return this.http.get<Education[]>(this.baseURL + '/Educations/GetAll');
   }
 
   deleteEducation(id : number):Observable<Education>{
-    return this.http.delete<Education>(this.educationURL + '/educationId?educationId=' + id);
+    return this.http.delete<Education>(this.baseURL + '/Educations/educationId?educationId=' + id);
   }
 
   saveDepartment(){
-    return this.http.post(this.departmentURL , this.departmentData);
+    return this.http.post(this.baseURL + '/Departments' , this.departmentData);
   }
 
   singleDepartment(id: any): Observable<Department> {
-    return this.http.get<Department>(this.departmentURL + '/GetById?departmentId=' + id);
+    return this.http.get<Department>(this.baseURL + '/Departments/GetById?departmentId=' + id);
   }
 
   updateDepartment():Observable<Department>{
-    return this.http.post<Department>(this.departmentURL , this.departmentData);
+    return this.http.post<Department>(this.baseURL + '/Departments' , this.departmentData);
   }
 
   getDepartments():Observable<Department[]>
   {
-    return this.http.get<Department[]>(this.departmentURL + '/GetAll');
+    return this.http.get<Department[]>(this.baseURL + '/Departments/GetAll');
   }
 
   deleteDepartment(id : number):Observable<Department>{
-    return this.http.delete<Department>(this.departmentURL + '/departmentId?departmentId=' + id);
+    return this.http.delete<Department>(this.baseURL + '/Departments/departmentId?departmentId=' + id);
   }
 
   saveUser(){
-    return this.http.post(this.userURL , this.userData);
+    return this.http.post(this.baseURL + '/UserDetails' , this.userData);
   }
 
   singleUser(id: any): Observable<UserDetail> {
-    return this.http.get<UserDetail>(this.userURL + '/GetById?userDetailsId=' + id);
+    return this.http.get<UserDetail>(this.baseURL + '/UserDetails/GetById?userDetailsId=' + id);
   }
 
   updateUser():Observable<UserDetail>{
-    return this.http.post<UserDetail>(this.userURL , this.userData);
+    return this.http.post<UserDetail>(this.baseURL + '/UserDetails' , this.userData);
   }
 
   getUsers():Observable<UserDetail[]>
   {
-    return this.http.get<UserDetail[]>(this.userURL + '/GetAll');
+    return this.http.get<UserDetail[]>(this.baseURL + '/UserDetails/GetAll');
   }
 
   deleteUser(id : number):Observable<UserDetail>{
-    return this.http.delete<UserDetail>(this.userURL + '/userDetailsId?userDetailsId=' + id);
+    return this.http.delete<UserDetail>(this.baseURL + '/UserDetails/userDetailsId?userDetailsId=' + id);
   }
 
   getCountries():Observable<Country[]>
   {
-    return this.http.get<Country[]>(this.countryURL + '/GetAll');
+    return this.http.get<Country[]>(this.baseURL + '/Countries/GetAll');
   }
 
   getStates(countryId : any):Observable<State[]>
   {
-    return this.http.get<State[]>(this.stateURL + '/Combo?countryId=' + countryId);
+    return this.http.get<State[]>(this.baseURL + '/States/Combo?countryId=' + countryId);
   }
 
   getCities(stateId  : any):Observable<City[]>
   {
-    return this.http.get<City[]>(this.cityURL + '/Combo?stateId=' + stateId);
+    return this.http.get<City[]>(this.baseURL + '/Cities/Combo?stateId=' + stateId);
   }
 
   login(){
-    return this.http.post(this.loginURL , this.loginData);
+    return this.http.post(this.baseURL + '/UserAdd/Login' , this.loginData);
   }
 
 

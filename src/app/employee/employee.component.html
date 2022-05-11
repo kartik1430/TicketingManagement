@@ -124,7 +124,7 @@
                             <select [(ngModel)]="service.userData.designationId"
                                 class="form-control" #designationId="ngModel" name="designationId" id="designationId"
                                 required>
-                                <option value="">Select Designation</option>
+                                <option value="0">Select Designation</option>
                                 <option *ngFor="let desig of desigData" value="{{desig.id}}">{{desig.name}}</option>
                             </select>
                             <div *ngIf="designationId.touched && designationId.value==0 || myForm.submitted" class="float-right">
@@ -150,7 +150,7 @@
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <label for="aadharNumber">AadharCard Number</label>
-                            <input type="text" name="aadharNumber"  maxlength="12"  pattern="^((\\+91-?)|0)?[0-9]{12}$"
+                            <input type="text" name="aadharNumber"  maxlength="12"  pattern="^[2-9][0-9]{11}$"
                                 required #aadharNumber="ngModel" 
                                 [(ngModel)]="service.userData.aadharNumber" autocomplete="off" class="form-control"
                                 placeholder="Enter your AadharCard Number" />
@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="panNumber">Pancard Number</label>
-                            <input [(ngModel)]="service.userData.panNumber" pattern="^([A-Z]){5}([0-9]){4}([A-Z]){1}$"
+                            <input [(ngModel)]="service.userData.panNumber" pattern="^[0-9A-Za-z]{10}$"
                                 maxlength="10"  type="text" class="form-control"
                                 placeholder="Enter your Pancard Number" autocomplete="off" name="panNumber" required
                                 #panNumber="ngModel" />
@@ -199,8 +199,8 @@
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <label for="mobile">Phone Number1</label>
-                            <input [(ngModel)]="service.userData.mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$"
-                                maxlength="10" name="mobile" required #mobile="ngModel"
+                            <input [(ngModel)]="service.userData.mobile" 
+                                maxlength="10" name="mobile" required #mobile="ngModel" pattern="^[0-9]*$"
                                  type="text" class="form-control"
                                 autocomplete="off" placeholder="Enter your PhoneNumber1" />
                             <!-- <div *ngIf="mobile.invalid && (mobile.touched || mobile.dirty)" class="float-right">
@@ -220,23 +220,15 @@
                                 Enter a valid Number
                             </span>
                             <span class="text-danger" *ngIf="mobile.touched && mobile.errors?.['maxlength']">
-                                Mobileno should contain 12 numbers
+                                Mobileno should contain 10 numbers
                             </span>
                         </div>
                         <div class="col-md-6">
                             <label for="on">Phone Number2</label><input type="text" name="on" required #on="ngModel"
-                                [(ngModel)]="service.userData.otherContactNumber" 
-                                autocomplete="off" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                [(ngModel)]="service.userData.otherContactNumber" pattern="^[0-9]*$"
+                                autocomplete="off" class="form-control" 
                                 maxlength="10" placeholder="Enter your PhoneNumber2" />
-                            <!-- <div *ngIf="on.invalid && (on.touched || on.dirty)" class="float-right">
-                                <p class="text-danger">Mobileno is required</p>
-                            </div>
-                            <div *ngIf="on.errors?.['maxlength']" class="float-right">
-                                <p class="text-danger">Mobile Number should contain 10 numbers</p>
-                            </div>
-                            <div *ngIf="on.errors && on.errors?.['pattern']">
-                                <p class="text-danger">Mobile Number should only contain numbers</p>
-                            </div> -->
+                            
                             <span class="text-danger"
                                 *ngIf="(on.touched || myForm.submitted) && on.errors?.['required']">
                                 Number is required
@@ -245,7 +237,7 @@
                                 Enter a valid Number
                             </span>
                             <span class="text-danger" *ngIf="on.touched && on.errors?.['maxlength']">
-                                Mobileno should contain 12 numbers
+                                Mobileno should contain 10 numbers
                             </span>
                         </div>
                     </div>
@@ -317,6 +309,7 @@
                                 <p class="text-danger">Please select Education</p>
                             </div>
                         </div>
+                        
                         <div class="col-md-12">
                             <label for="CA">Current Address</label>
                             <textarea class="form-control" [(ngModel)]="service.userData.address" #CA="ngModel" required
@@ -326,6 +319,11 @@
                             <div *ngIf="CA.invalid && (CA.touched || CA.dirty || myForm.submitted)" class="float-right">
                                 <p class="text-danger">Address is required</p>
                             </div>
+                        </div>
+                        <div class="col-md-6"> 
+                            <input type="checkbox" class="form-check-input" name="isDeleted" #isDeleted="ngModel"
+                            [(ngModel)]="service.userData.isDeleted" value="">
+                            <label class="form-check-label" for="isDeleted">IsDeleted</label>
                         </div>
                         <!-- <div class="col-md-12">
                         <label for="PA">Permanent Address</label>

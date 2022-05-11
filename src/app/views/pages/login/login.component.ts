@@ -22,20 +22,13 @@ export class LoginComponent {
     if(localStorage.getItem('token')!=null)
       this.router.navigateByUrl('/dashboard'); 
   }
-  // onSubmit()
-  // {
-  //   this.router.navigateByUrl('/dashboard'); 
-  // }
+  
 
   onSubmit(form:NgForm){
     this.service.login().subscribe(
       (res : any)=>{
-        console.log(res);
         localStorage.setItem('role',res.user.role);
-        // localStorage.setItem('role',res.user.userDetails);
-        // localStorage.setItem('Username',res.Username);
         localStorage.setItem('token',res.token);
-        // this.user = this.getUser(res.token);
          this.router.navigateByUrl('/dashboard');
       },
       err=>{

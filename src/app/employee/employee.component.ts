@@ -82,13 +82,13 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
-  populateUser(selectedemp: UserDetail) {
-    // this.actionBtn = "Update";
-      let df = this.dp.transform(selectedemp.dateOfBirth, 'dd-MM-yyyy');
-      selectedemp.dateOfBirth = df;
-      console.log(selectedemp.dateOfBirth);
-    this.service.userData = selectedemp;
-  }
+  // populateUser(selectedemp: UserDetail) {
+  //   // this.actionBtn = "Update";
+  //     let df = this.dp.transform(selectedemp.dateOfBirth, 'dd-MM-yyyy');
+  //     selectedemp.dateOfBirth = df;
+  //     console.log(selectedemp.dateOfBirth);
+  //   this.service.userData = selectedemp;
+  // }
 
   singleuser() {
     this.service.singleUser(this.id).subscribe((res: any) => {
@@ -120,17 +120,17 @@ export class EmployeeComponent implements OnInit {
   }
 
   insertUser(myform: NgForm) {
+    console.log(myform);
     this.resetForm(myform);
     this.service.saveUser().subscribe(d => {
       console.log('Save Success');
+      alert("User added successfully");
     });
-    alert("User added successfully");
     this.router.navigateByUrl('/employeelist')
   }
 
   updateUser(myform: NgForm) {
     this.service.updateUser().subscribe(d => {
-      
       this.resetForm(myform);
     });
     alert("User updated successfully");

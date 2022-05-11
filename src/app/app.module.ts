@@ -73,6 +73,7 @@ import { DepartmentlistComponent } from './departmentlist/departmentlist.compone
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
+import { TicketComponent } from './ticketmaster/ticket/ticket.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {

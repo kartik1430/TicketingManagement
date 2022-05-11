@@ -7,11 +7,11 @@ export class UserDetail{
     lastName : string= '';
     address : string = '';
     email : string = '';
-    mobile : number=0;
+    mobile :  string = '';
     gender : string='';
     dateOfJoining : any;
     dateOfBirth : any;
-    designationId : string='';
+    designationId : number=0;
     designationName : string='';
     roleId : number=0;
     roleName : string='';
@@ -27,8 +27,8 @@ export class UserDetail{
     educationName:string='';
     departmentId : number=0;
     departmentName : string='';
-    aadharNumber : number=0;
-    panNumber : number=0;
-    otherContactNumber : number=0;
-    status : number=0;
+    aadharNumber :  string = '';
+    panNumber : string='';
+    otherContactNumber :  string = '';
+    isDeleted : boolean=false;
 }

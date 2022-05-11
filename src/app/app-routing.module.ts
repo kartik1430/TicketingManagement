@@ -182,6 +182,11 @@ const routes: Routes = [
         },
       },
       {
+        path: 'ticketmaster',
+        loadChildren: () =>
+          import('./ticketmaster/ticketmaster.module').then((m) => m.TicketmasterModule)
+      },
+      {
         path: 'base',
         loadChildren: () =>
           import('./views/base/base.module').then((m) => m.BaseModule)
