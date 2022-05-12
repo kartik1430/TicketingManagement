@@ -33,11 +33,11 @@ export class EducationComponent implements OnInit {
     });
   }
 
-  populateEdu(selectedEdu : Education){
-    this.actionBtn = "Update";
-    console.log(selectedEdu);
-    this.service.educationData = selectedEdu;
-  }
+  // populateEdu(selectedEdu : Education){
+  //   this.actionBtn = "Update";
+  //   console.log(selectedEdu);
+  //   this.service.educationData = selectedEdu;
+  // }
 
   singleeducation() {
     this.service.singleEducation(this.id).subscribe((res: any) => {

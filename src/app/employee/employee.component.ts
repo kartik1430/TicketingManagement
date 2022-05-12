@@ -19,10 +19,7 @@ import { ApiService } from '../shared/api.service';
 })
 export class EmployeeComponent implements OnInit {
 
-
-
   actionBtn: string = "Save";
-
   id: any;
   desigData: any;
   departData: any;
@@ -40,12 +37,9 @@ export class EmployeeComponent implements OnInit {
     this.loadRole();
     this.loadEducation();
     this.loadCountry();
-    
-
   }
 
   ngOnInit(): void {
-    
     this.id = this.route.snapshot.params['id'];
     // console.log(this.id);
     if (this.id) {
@@ -53,9 +47,8 @@ export class EmployeeComponent implements OnInit {
       this.singleuser();
     }
     this.getAllUsers();
-      
-
   }
+
   Back() {
     this.router.navigateByUrl('/employeelist')
   }
@@ -72,28 +65,16 @@ export class EmployeeComponent implements OnInit {
     })
   }
 
-
-
-
-
   getAllUsers() {
     this.service.getUsers().subscribe(data => {
       this.service.listUsers = data;
     });
   }
 
-  // populateUser(selectedemp: UserDetail) {
-  //   // this.actionBtn = "Update";
-  //     let df = this.dp.transform(selectedemp.dateOfBirth, 'dd-MM-yyyy');
-  //     selectedemp.dateOfBirth = df;
-  //     console.log(selectedemp.dateOfBirth);
-  //   this.service.userData = selectedemp;
-  // }
 
   singleuser() {
     this.service.singleUser(this.id).subscribe((res: any) => {
       this.service.userData = res;
-      
     });
   }
 
@@ -120,7 +101,6 @@ export class EmployeeComponent implements OnInit {
   }
 
   insertUser(myform: NgForm) {
-    console.log(myform);
     this.resetForm(myform);
     this.service.saveUser().subscribe(d => {
       console.log('Save Success');
@@ -131,9 +111,10 @@ export class EmployeeComponent implements OnInit {
 
   updateUser(myform: NgForm) {
     this.service.updateUser().subscribe(d => {
+      console.log(myform);
       this.resetForm(myform);
+      alert("User updated successfully");
     });
-    alert("User updated successfully");
     this.router.navigateByUrl('/employeelist')
   }
 
@@ -157,7 +138,6 @@ export class EmployeeComponent implements OnInit {
   loadBg() {
     this.service.getBloodgroups().subscribe(res => {
       this.bgData = res;
-
     })
   }
 
@@ -170,7 +150,6 @@ export class EmployeeComponent implements OnInit {
   loadEducation() {
     this.service.getEducations().subscribe(res => {
       this.eduData = res;
-
     })
   }
 

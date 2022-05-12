@@ -11,6 +11,7 @@ export const navItems: INavData[] = [
   },
   
   {  
+    
     name: 'Master',
     url: '/master',
     iconComponent: { name: 'cil-star' },

@@ -22,7 +22,7 @@
                         <div class="col-md-6">
                             <label for="firstName">First Name</label>
                             <input #firstName="ngModel" [(ngModel)]="service.userData.firstName" type="text"
-                                 class="form-control" pattern="[a-zA-Z ]*"
+                                 class="form-control" pattern="^[\\sa-zA-Z\\s]*$"
                                 placeholder="Enter your firstname" name="firstName" autocomplete="off" required />
                             <span class="text-danger"
                                 *ngIf="(firstName.touched || myForm.submitted) && firstName.errors?.['required']">
@@ -34,12 +34,12 @@
                         </div>
                         <div class="col-md-6">
                             <label for="middleName">Middle Name</label>
-                            <input #middleName="ngModel" pattern="[a-zA-Z ]*" [(ngModel)]="service.userData.middleName"
+                            <input #middleName="ngModel" pattern="^[\\sa-zA-Z\\s]*$" [(ngModel)]="service.userData.middleName"
                                 type="text"  class="form-control"
                                 placeholder="Enter your middleName" name="middleName" autocomplete="off" required />
                             <span class="text-danger"
                                 *ngIf="(middleName.touched || myForm.submitted) && middleName.errors?.['required']">
-                                Lastname is required
+                                Middlename is required
                             </span>
                             <span class="text-danger" *ngIf="middleName.touched && middleName.errors?.['pattern']">
                                 Enter a valid Middlename
@@ -49,7 +49,7 @@
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <label for="lastName">lastName</label>
-                            <input #lastName="ngModel" pattern="[a-zA-Z ]*" [(ngModel)]="service.userData.lastName"
+                            <input #lastName="ngModel" pattern="^[\\sa-zA-Z\\s]*$" [(ngModel)]="service.userData.lastName"
                                 type="text"  class="form-control"
                                 placeholder="Enter your lastName" name="lastName" autocomplete="off" required />
                             <span class="text-danger"
@@ -61,20 +61,10 @@
                             </span>
                         </div>
                         <div class="col-md-6">
-                            <!-- <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Enter Email"
-                                #email="ngModel" [(ngModel)]="service.userData.email" required autocomplete="off"
-                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
-                            <div *ngIf="email.invalid && (email.touched || email.dirty)" class="float-right">
-                                <p class="text-danger"> This field is Required</p>
-                            </div>
-                            <div *ngIf="email.errors && email.errors?.['pattern']">
-                                <p class="text-danger">Email is invalid</p>
-                            </div> -->
                             <label>Email</label>
                             <input type="text" class="form-control" [(ngModel)]="service.userData.email" name="email"
-                                placeholder="Enter Email" #email="ngModel" required email autocomplete="off"
-                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                                placeholder="Enter Email" #email="ngModel" required autocomplete="off"
+                                pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$">
                             <span class="text-danger"
                                 *ngIf="(email.touched || myForm.submitted) && email.errors?.['required']">
                                 Email is required
@@ -87,9 +77,9 @@
                     <div class="row mt-3">
                         <div class="col-md-6">
                             <label for="date">DateOfBirth</label>
-                            <input type="date" name="doj" class="form-control" #doj="ngModel"
+                            <input type="date" name="dateOfBirth" class="form-control" #dateOfBirth="ngModel"
                                 [(ngModel)]="service.userData.dateOfBirth" required>
-                            <div *ngIf="doj.invalid && (doj.touched || doj.dirty || myForm.submitted)" class="float-right">
+                            <div *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty || myForm.submitted)" class="float-right">
                                 <p class="text-danger">DOB is required</p>
                             </div>
                         </div>
@@ -144,7 +134,7 @@
                               <label for="other">Other</label>
                             <div *ngIf="gender.touched && gender.value==0 || myForm.submitted" class="float-right">
                                 <p class="text-danger">Please select Gender</p>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -173,16 +163,6 @@
                                 maxlength="10"  type="text" class="form-control"
                                 placeholder="Enter your Pancard Number" autocomplete="off" name="panNumber" required
                                 #panNumber="ngModel" />
-                            <!-- <div *ngIf="panNumber.invalid && (panNumber.touched || panNumber.dirty)"
-                                class="float-right">
-                                <p class="text-danger">Panumber is required</p>
-                            </div>
-                            <div *ngIf="panNumber.errors?.['maxlength']" class="float-right">
-                                <p class="text-danger">Panumber should contain 12 numbers</p>
-                            </div>
-                            <div *ngIf="panNumber.errors && panNumber.errors?.['pattern']">
-                                <p class="text-danger">Panumber should only contain numbers</p>
-                            </div> -->
                             <span class="text-danger"
                                 *ngIf="(panNumber.touched || myForm.submitted) && panNumber.errors?.['required']">
                                 Pancad Number is required

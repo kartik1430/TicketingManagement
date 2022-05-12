@@ -9,8 +9,8 @@ export class UserDetail{
     email : string = '';
     mobile :  string = '';
     gender : string='';
-    dateOfJoining : any;
-    dateOfBirth : any;
+    dateOfJoining !: Date;
+    dateOfBirth !: Date;
     designationId : number=0;
     designationName : string='';
     roleId : number=0;
@@ -30,5 +30,5 @@ export class UserDetail{
     aadharNumber :  string = '';
     panNumber : string='';
     otherContactNumber :  string = '';
-    isDeleted : boolean=false;
+    isDeleted : boolean=true;
 }

@@ -20,7 +20,7 @@ export class ApiService {
 
   constructor(private http : HttpClient) { }
 
-  baseURL = 'http://192.168.10.77:8070/api';
+  baseURL = 'http://192.168.70.6:8080/api';
 
 
   // roleURL = 'https://localhost:7273/api/Role';
@@ -175,6 +175,7 @@ export class ApiService {
 
   saveUser(){
     return this.http.post(this.baseURL + '/UserDetails' , this.userData);
+    
   }
 
   singleUser(id: any): Observable<UserDetail> {
