@@ -101,6 +101,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   insertUser(myform: NgForm) {
+    debugger
     this.resetForm(myform);
     this.service.saveUser().subscribe(d => {
       console.log('Save Success');
@@ -111,7 +112,6 @@ export class EmployeeComponent implements OnInit {
 
   updateUser(myform: NgForm) {
     this.service.updateUser().subscribe(d => {
-      console.log(myform);
       this.resetForm(myform);
       alert("User updated successfully");
     });

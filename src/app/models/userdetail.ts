@@ -1,5 +1,3 @@
-
-
 export class UserDetail{
     id : number=0;
     firstName : string= '';
