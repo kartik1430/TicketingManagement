@@ -20,7 +20,7 @@ export class ApiService {
 
   constructor(private http : HttpClient) { }
 
-  baseURL = 'http://192.168.70.6:8080/api';
+  baseURL = 'http://192.168.70.7:91/api';
 
 
   // roleURL = 'https://localhost:7273/api/Role';

@@ -45,7 +45,7 @@ const routes: Routes = [
         path: 'rolemaster',
         component : RolemasterComponent, canActivate:[MenuGuard],
         data: {
-          title: 'Role'
+          title: 'Role',
         },
       },
       {

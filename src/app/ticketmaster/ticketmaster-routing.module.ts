@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEditTicketComponent } from './add-edit-ticket/add-edit-ticket.component';
 import {TicketComponent} from './ticket/ticket.component'
 const routes: Routes = [
   {
@@ -13,6 +14,13 @@ const routes: Routes = [
         component: TicketComponent,
         data: {
           title: 'Ticket',
+        },
+      },
+      {
+        path: 'add-edit-ticket',
+        component: AddEditTicketComponent,
+        data: {
+          title: '',
         },
       },
 ],

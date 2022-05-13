@@ -1,10 +1,11 @@
 <div class="row">
     <div class="col-md-3 ticket-card">
         <div class="d-flex flex-column bg-white" id="ticket-list">
-            <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+            <a  class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
                 <span style="text-align: center" id="tl1" class="fs-5">
                     Ticket List</span>
             </a>
+            <button (click)="add()">Add</button>
             <div class="input-group rounded">
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
@@ -74,6 +75,7 @@
     </div>
     <div class="col-md-5">
         <h1><strong>Ticket Issue</strong></h1>
+        <!-- <button>Create</button> -->
         <button class="btn1">
             <i class="fa fa-pencil" aria-hidden="true"></i> Edit
         </button>
@@ -88,13 +90,13 @@
             <h2 class="d1">Description</h2>
             <textarea id="w3review" name="w3review" rows="4" cols="50"> </textarea>
             <h2 class="d1">Attachments</h2>
-
+            <!-- <input type="file" id="myFile" onclick="document.getElementById('getFile').click()" name="filename"> -->
             <button class="col-md-3" id="fu" onclick="document.getElementById('getFile').click()">
                 <i class="fa fa-upload" aria-hidden="true"></i> Drop files to attach, or
                 browse.
             </button>
             <input type="file" id="getFile" style="display: none" />
-            <!-- <input type="submit"> -->
+              <!-- <input type="submit">      -->
 
             <h2 class="a1">Acitivity</h2>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -129,10 +131,10 @@
         </div> -->
     </div>
             <div class="col-md-2">
-                <h2 class="d1">People</h2>
+                <h2 class="d1"><i class="fa-regular fa-user"></i> People</h2>
                 <h4 class="t1">Assignee :</h4>
-                <h2 class="d1">Dates</h2>
-                <h4 class="t1">Created </h4>
+                <h2 class="d1"><i class="fa-regular fa-calendar"></i> Dates</h2>
+                <h4 class="t1">Created : </h4>
                 <h4 class="t1">Updated :</h4>                
                 
             </div>
