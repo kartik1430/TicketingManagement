@@ -49,11 +49,11 @@ export class RolemasterComponent implements OnInit {
   Back(){
     this.router.navigateByUrl('/rolelist')
   }
-  populateRole(selectedRole : Role){
-    this.actionBtn = "Update";
-    console.log(selectedRole);
-    this.service.roleData = selectedRole;
-  }
+  // populateRole(selectedRole : Role){
+  //   this.actionBtn = "Update";
+  //   console.log(selectedRole);
+  //   this.service.roleData = selectedRole;
+  // }
 
   singlerolefetch() {
 

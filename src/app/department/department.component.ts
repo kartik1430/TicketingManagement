@@ -33,11 +33,11 @@ export class DepartmentComponent implements OnInit {
     });
   }
 
-  populateDepart(selectedDepart : Department){
-    this.actionBtn = "Update";
-    console.log(selectedDepart);
-    this.service.departmentData = selectedDepart;
-  }
+  // populateDepart(selectedDepart : Department){
+  //   this.actionBtn = "Update";
+  //   console.log(selectedDepart);
+  //   this.service.departmentData = selectedDepart;
+  // }
 
   singledepartfetch(){
     this.service.singleDepartment(this.id).subscribe((res: any) => {

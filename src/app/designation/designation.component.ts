@@ -34,11 +34,11 @@ export class DesignationComponent implements OnInit {
     });
   }
 
-  populateDesig(selectedDesig : Designation){
-    this.actionBtn = "Update";
-    console.log(selectedDesig);
-    this.service.desigData = selectedDesig;
-  }
+  // populateDesig(selectedDesig : Designation){
+  //   this.actionBtn = "Update";
+  //   console.log(selectedDesig);
+  //   this.service.desigData = selectedDesig;
+  // }
 
   singledesigfetch() {
     this.service.singleDesignation(this.id).subscribe((res: any) => {

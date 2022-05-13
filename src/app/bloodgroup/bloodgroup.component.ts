@@ -39,11 +39,11 @@ export class BloodgroupComponent implements OnInit {
     });
   }
 
-  populateBg(selectedBg : Bloodgroup){
-    this.actionBtn = "Update";
-    console.log(selectedBg);
-    this.service.bgData = selectedBg;
-  }
+  // populateBg(selectedBg : Bloodgroup){
+  //   this.actionBtn = "Update";
+  //   console.log(selectedBg);
+  //   this.service.bgData = selectedBg;
+  // }
 
   deleteBg(id : number){
     if(confirm('Are you really want to delete this record?')){
