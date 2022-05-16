@@ -22,6 +22,7 @@ import { DesignationlistComponent } from './designationlist/designationlist.comp
 import { EducationlistComponent } from './educationlist/educationlist.component';
 import { DepartmentlistComponent } from './departmentlist/departmentlist.component';
 import {MenuGuard} from './auth/menu.guard';
+import { TicketComponent } from './ticketmaster/ticket/ticket.component';
 
 const routes: Routes = [
   {
@@ -185,6 +186,13 @@ const routes: Routes = [
         path: 'ticketmaster',
         loadChildren: () =>
           import('./ticketmaster/ticketmaster.module').then((m) => m.TicketmasterModule)
+      },
+      {
+        path: 'view/:id',
+        component : TicketComponent,
+        data: {
+          title: 'View'
+        },
       },
       {
         path: 'base',

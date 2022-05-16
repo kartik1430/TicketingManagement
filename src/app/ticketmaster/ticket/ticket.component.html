@@ -1,11 +1,14 @@
 <div class="row">
     <div class="col-md-3 ticket-card">
         <div class="d-flex flex-column bg-white" id="ticket-list">
-            <a  class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-                <span style="text-align: center" id="tl1" class="fs-5">
-                    Ticket List</span>
+            <a class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+                <div class="col-md-10">
+                    <span style="text-align: center" id="tl1" class="fs-5">
+                        Ticket List</span>
+                </div>
+                <button class="float-right" (click)="add()">Add</button>
             </a>
-            <button (click)="add()">Add</button>
+            <!-- <button (click)="add()">Add</button> -->
             <div class="input-group rounded">
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
@@ -14,61 +17,16 @@
                 </span>
             </div>
             <div class="list-group list-group-flush border-bottom scrollarea" id="ticketlist">
-                <a href="" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+                <a href="view/{{ ticket.id }}" *ngFor="let ticket of service.listTicket; let i = index"
+                    class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
                     <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong class="mb-1" id="tl"><i class="fa fa-ticket" aria-hidden="true"></i> CM-01</strong>
-                        <small>27thJan 2022</small>
+                        <strong (click)="viewTicket(ticket.id)" class="mb-1" id="tl"><i class="fa fa-ticket"
+                                aria-hidden="true"></i> T-{{
+                            i + 1
+                            }}</strong>
+                        <small>{{ ticket.createdDate | date }}</small>
                     </div>
-                    <div class="col-10 mb-1 small">Ticket Description</div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong id="tl" class="mb-1"><i class="fa fa-ticket" aria-hidden="true"></i> CM-02</strong>
-                        <small>20thFeb 2022</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Ticket Description</div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong id="tl" class="mb-1"><i class="fa fa-ticket" aria-hidden="true"></i> CM-02</strong>
-                        <small>20thFeb 2022</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Ticket Description</div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong id="tl" class="mb-1"><i class="fa fa-ticket" aria-hidden="true"></i> CM-02</strong>
-                        <small>20thFeb 2022</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Ticket Description</div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong id="tl" class="mb-1"><i class="fa fa-ticket" aria-hidden="true"></i> CM-02</strong>
-                        <small>20thFeb 2022</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Ticket Description</div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong id="tl" class="mb-1"><i class="fa fa-ticket" aria-hidden="true"></i> CM-02</strong>
-                        <small>20thFeb 2022</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Ticket Description</div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong id="tl" class="mb-1"><i class="fa fa-ticket" aria-hidden="true"></i> CM-02</strong>
-                        <small>20thFeb 2022</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Ticket Description</div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong id="tl" class="mb-1"><i class="fa fa-ticket" aria-hidden="true"></i> CM-02</strong>
-                        <small>20thFeb 2022</small>
-                    </div>
-                    <div class="col-10 mb-1 small">Ticket Description</div>
+                    <div class="col-10 mb-1 small">{{ ticket.description }}</div>
                 </a>
             </div>
         </div>
@@ -80,63 +38,59 @@
             <i class="fa fa-pencil" aria-hidden="true"></i> Edit
         </button>
         <div class="row">
-            <div class="col-md-10">
-            <h2 class="d1">Details</h2>
-            <h4 class="t1">Type :</h4>
-            <h4 class="t2">Status :</h4>
-            <h4 class="t2">Priority :</h4>
-            <h4 class="t2">Labels :</h4>
+            <div class="col-md-8">
+                <h2 class="d1">Details</h2>
+                <!-- <h4 class="t1">Type :</h4> -->
 
-            <h2 class="d1">Description</h2>
-            <textarea id="w3review" name="w3review" rows="4" cols="50"> </textarea>
-            <h2 class="d1">Attachments</h2>
-            <!-- <input type="file" id="myFile" onclick="document.getElementById('getFile').click()" name="filename"> -->
-            <button class="col-md-3" id="fu" onclick="document.getElementById('getFile').click()">
-                <i class="fa fa-upload" aria-hidden="true"></i> Drop files to attach, or
-                browse.
-            </button>
-            <input type="file" id="getFile" style="display: none" />
-              <!-- <input type="submit">      -->
+                <h4 class="t2">Status :{{ service.TicketData.ticketStatus }}</h4>
+                <h4 class="t2">Priority :{{ service.TicketData.priorityType }}</h4>
+                <!-- <h4 class="t2">Labels :</h4> -->
 
-            <h2 class="a1">Acitivity</h2>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
-                        type="button" role="tab" aria-controls="home" aria-selected="true">
-                        All
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments"
-                        type="button" role="tab" aria-controls="profile" aria-selected="false">
-                        Comments
-                    </button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-                    Nothing to see here.
+                <h2 class="d1">Description : </h2>{{ service.TicketData.description }}
+                <!-- <textarea id="w3review" name="w3review" rows="4" cols="50"> </textarea> -->
+                <h2 class="d1">Attachments</h2>
+                <!-- <input type="file" id="myFile" onclick="document.getElementById('getFile').click()" name="filename"> -->
+                <button class="col-md-2" id="fu" onclick="document.getElementById('getFile').click()">
+                    <i class="fa fa-upload" aria-hidden="true"></i> Drop files to attach,
+                    or browse.
+                </button>
+                <input type="file" id="getFile" style="display: none" />
+                <!-- <input type="submit">      -->
+
+                <h2 class="a1">Acitivity</h2>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">
+                            All
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments"
+                            type="button" role="tab" aria-controls="profile" aria-selected="false">
+                            Comments
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                        Nothing to see here.
+                    </div>
+                    <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                        There are no comments yet on this issue.
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
-                    There are no comments yet on this issue.
-                </div>
+
+                    
             </div>
-
-            <!-- <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
-            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
-        </button>
-        <hr>
-        <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-            <div class="well well-lg card card-block card-header">Some content</div>
-        </div> -->
-    </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <h2 class="d1"><i class="fa-regular fa-user"></i> People</h2>
-                <h4 class="t1">Assignee :</h4>
+                <h4 class="t1">Assignee :{{ service.TicketData.assignedUserName }}</h4>
                 <h2 class="d1"><i class="fa-regular fa-calendar"></i> Dates</h2>
-                <h4 class="t1">Created : </h4>
-                <h4 class="t1">Updated :</h4>                
-                
+                <h4 class="t1">Created :</h4>
+                {{ service.TicketData.createdDate | date }}
+                <h4 class="t1">Updated :</h4>
+                {{ service.TicketData.modifiedDate | date }}
             </div>
         </div>
     </div>

@@ -25,17 +25,9 @@ export class RolemasterComponent implements OnInit {
     if (this.id) {
       this.actionBtn = "Update";
       this.singlerolefetch();
-
     }
     this.getAllRoles();
 
-    $('.selectall').click(function() {
-      if ($(this).is(':checked')) {
-          $('input:checkbox').attr('checked');
-      } else {
-          $('input:checkbox').attr('checked');
-      }
-  });
   
     
   }

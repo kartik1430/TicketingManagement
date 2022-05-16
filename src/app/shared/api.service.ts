@@ -10,7 +10,10 @@ import {Country} from '../models/country';
 import {State} from '../models/state';
 import {City} from '../models/city';
 import {Login} from '../models/Login';
+import {Ticket} from '../models/Ticket';
 import { Observable } from 'rxjs';
+import { Tick } from 'chart.js';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,7 @@ export class ApiService {
 
   constructor(private http : HttpClient) { }
 
-  baseURL = 'http://192.168.70.7:91/api';
+  baseURL = 'http://192.168.10.77:91/api';
 
 
   // roleURL = 'https://localhost:7273/api/Role';
@@ -40,22 +43,25 @@ export class ApiService {
   listDesignation : Designation[] = [];  //for get data
   desigData : Designation = new Designation(); //for post data
 
-  listbg : Bloodgroup[] =[];
-  bgData : Bloodgroup= new Bloodgroup();
+  listbg : Bloodgroup[] =[];//for get data
+  bgData : Bloodgroup= new Bloodgroup();//for post data
 
-  listeducation : Education[] = [];
-  educationData : Education = new Education();
+  listeducation : Education[] = [];//for get data
+  educationData : Education = new Education();//for post data
 
-  listDepartment : Department[] = [];
-  departmentData : Department = new Department();
+  listDepartment : Department[] = [];//for get data
+  departmentData : Department = new Department(); //for post data
 
-  listUsers : UserDetail[] = [];
-  userData : UserDetail = new UserDetail();
+  listUsers : UserDetail[] = [];//for get data
+  userData : UserDetail = new UserDetail();  //for post data
 
-  listLogins : Login[] = [];
-  loginData : Login = new Login();
+  listLogins : Login[] = [];//for get data
+  loginData : Login = new Login(); //for post data
 
-  listState : State[] =[];
+  listState : State[] =[]; //for get data
+
+  listTicket : Ticket[] = [];//for get data
+  TicketData : Ticket = new Ticket();
 
   GetRolebyToken(token : any){
     let _token = token.split('.')[1];
@@ -214,6 +220,25 @@ export class ApiService {
     return this.http.post(this.baseURL + '/UserAdd/Login' , this.loginData);
   }
 
+  getTickets():Observable<Ticket[]>
+  {
+    return this.http.get<Ticket[]>(this.baseURL + '/Tickets/GetAllTicket');
+  }
+  saveTicket(){
+    return this.http.post(this.baseURL + '/Tickets' , this.TicketData);
+  }
+
+  singleTicket(id: any): Observable<Ticket> {
+    return this.http.get<Ticket>(this.baseURL + '/Tickets/GetTicketById?ticketId=' + id);
+  }
+
+  updateTicket():Observable<Ticket>{
+    return this.http.post<Ticket>(this.baseURL  + '/Tickets'  , this.TicketData);
+  }
+
+  // deleteTicket(id : number):Observable<Ticket>{
+  //   return this.http.delete<Ticket>(this.baseURL + '/Tickets/bloodGroupId?bloodGroupId=' + id);
+  // }
 
   
 
